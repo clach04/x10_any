@@ -1,6 +1,6 @@
 # x10_any
 
-Wapper module to control X10 devices.
+Wrapper module to control X10 devices.
 
 
 ### Table of Contents
