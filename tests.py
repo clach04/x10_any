@@ -24,6 +24,12 @@ class TestUtils(TestCase):
         result = x10_any.normalize_housecode(test_value)
         self.assertEqual(canon, result)
 
+    def test_validate_house_code_c_lower(self):
+        test_value = 'c'
+        canon = 'C'
+        result = x10_any.normalize_housecode(test_value)
+        self.assertEqual(canon, result)
+
     def test_validate_house_code_p_upper(self):
         test_value = 'P'
         canon = 'P'
