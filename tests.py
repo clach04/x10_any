@@ -7,7 +7,7 @@ import os
 import sys
 from unittest import main, TestCase
 
-# import x10_any
+import x10_any
 
 
 class TestUtils(TestCase):
@@ -76,7 +76,6 @@ class TestUtils(TestCase):
         def doit():
             x10_any.normalize_housecode(test_value)
         self.failUnlessRaises(x10_any.X10BaseException, doit)
-
 
 
 if __name__ == "__main__":
