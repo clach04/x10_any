@@ -2,6 +2,8 @@
 
 Wrapper module to control X10 devices.
 
+https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master
+
 
 ### Table of Contents
 * [Information](#information)
