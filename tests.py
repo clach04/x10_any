@@ -11,6 +11,7 @@ import x10_any
 
 
 class TestUtils(TestCase):
+
     def test_validate_house_code_a_upper(self):
         test_value = 'A'
         canon = 'A'
@@ -99,7 +100,6 @@ class TestUtils(TestCase):
         self.failUnlessRaises(x10_any.X10BaseException, doit)
         # basically a complicated
         # isinstance(x10_any.X10InvalidHouseCode(), x10_any.X10BaseException)
-
 
 if __name__ == "__main__":
     sys.exit(main())
