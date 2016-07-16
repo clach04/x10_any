@@ -108,11 +108,58 @@ class TestUtils(TestCase):
     def test_validate_house_code_one_baseexception(self):
         test_value = '1'
 
+        # basically a complicated
+        # isinstance(x10_any.X10InvalidHouseCode(), x10_any.X10BaseException)
         def doit():
             x10_any.normalize_housecode(test_value)
         self.assertRaises(x10_any.X10BaseException, doit)
-        # basically a complicated
-        # isinstance(x10_any.X10InvalidHouseCode(), x10_any.X10BaseException)
+
+    def test_validate_unit_number_1(self):
+        test_value = 1
+        canon = 1
+        result = x10_any.normalize_unitnumber(test_value)
+        self.assertEqual(canon, result)
+
+    def test_validate_unit_number_16(self):
+        test_value = 16
+        canon = 16
+        result = x10_any.normalize_unitnumber(test_value)
+        self.assertEqual(canon, result)
+
+    def test_validate_unit_number_negative_1(self):
+        test_value = -1
+
+        def doit():
+            _ = x10_any.normalize_unitnumber(test_value)
+        self.assertRaises(x10_any.X10InvalidUnitNumber, doit)
+
+    def test_validate_unit_number_17(self):
+        test_value = 17
+
+        def doit():
+            _ = x10_any.normalize_unitnumber(test_value)
+        self.assertRaises(x10_any.X10InvalidUnitNumber, doit)
+
+    def test_validate_unit_number_none(self):
+        test_value = None
+
+        def doit():
+            _ = x10_any.normalize_unitnumber(test_value)
+        self.assertRaises(x10_any.X10InvalidUnitNumber, doit)
+
+    def test_validate_unit_number_a(self):
+        test_value = 'a'
+
+        def doit():
+            _ = x10_any.normalize_unitnumber(test_value)
+        self.assertRaises(x10_any.X10InvalidUnitNumber, doit)
+
+    def test_validate_unit_number_1_float(self):
+        test_value = 1.0
+        canon = 1
+        result = x10_any.normalize_unitnumber(test_value)
+        self.assertEqual(canon, result)
+
 
 if __name__ == "__main__":
     sys.exit(main())
