@@ -5,3 +5,15 @@
 
 import os
 import sys
+
+
+class X10BaseException(Exception):
+    '''Base X10 any exception'''
+
+
+class X10InvalidHouseCode(X10BaseException):
+    '''Invalid House Code exception'''
+
+
+def normalize_housecode(house_code):
+    pass
