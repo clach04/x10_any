@@ -2,8 +2,7 @@
 
 Wrapper module to control X10 devices.
 
-https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master
-
+[ ![Codeship Status for clach04/x10_any](https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master)](https://codeship.com/projects/163630)
 
 ### Table of Contents
 * [Information](#information)
