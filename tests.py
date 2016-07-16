@@ -54,63 +54,63 @@ class TestUtils(TestCase):
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_q_lower(self):
         test_value = 'q'
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_at_sign(self):
         test_value = '@'
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_none(self):
         test_value = None
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_aa(self):
         test_value = 'aa'
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_one_str(self):
         test_value = '1'
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_one_int(self):
         test_value = 1
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_one_float(self):
         test_value = 1.0
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+        self.assertRaises(x10_any.X10InvalidHouseCode, doit)
 
     def test_validate_house_code_one_baseexception(self):
         test_value = '1'
 
         def doit():
             x10_any.normalize_housecode(test_value)
-        self.failUnlessRaises(x10_any.X10BaseException, doit)
+        self.assertRaises(x10_any.X10BaseException, doit)
         # basically a complicated
         # isinstance(x10_any.X10InvalidHouseCode(), x10_any.X10BaseException)
 
