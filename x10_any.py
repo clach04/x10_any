@@ -16,4 +16,5 @@ class X10InvalidHouseCode(X10BaseException):
 
 
 def normalize_housecode(house_code):
-    pass
+    house_code = house_code.upper()
+    return house_code
