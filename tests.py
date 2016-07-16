@@ -49,6 +49,34 @@ class TestUtils(TestCase):
             x10_any.normalize_housecode(test_value)
         self.failUnlessRaises(ValueError, doit)  # not sure I see the need for a x10_any.??Exception
 
+    def test_validate_house_code_at_sign(self):
+        test_value = '@'
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(ValueError, doit)  # not sure I see the need for a x10_any.??Exception
+
+    def test_validate_house_code_none(self):
+        test_value = None
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(ValueError, doit)  # not sure I see the need for a x10_any.??Exception
+
+    def test_validate_house_code_aa(self):
+        test_value = 'aa'
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(ValueError, doit)  # not sure I see the need for a x10_any.??Exception
+
+    def test_validate_house_code_one(self):
+        test_value = '1'
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(ValueError, doit)  # not sure I see the need for a x10_any.??Exception
+
 
 if __name__ == "__main__":
     sys.exit(main())
