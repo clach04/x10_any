@@ -18,7 +18,7 @@ Initial focus is supporting:
       * https://sourceforge.net/projects/mochad/ for CM15A RF (radio frequency) and PL (power line) controller and the CM19A RF controller
       * https://bitbucket.org/clach04/mochad_firecracker/ works under Windows and Linux and can control CM17A serial Firecracker
 
-Implemented in pure Python. Known to work with:
+Implemented in pure Python. Aim to work with:
 
   * Python 2.7
   * Python 3.5
