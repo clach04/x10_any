@@ -16,5 +16,7 @@ class X10InvalidHouseCode(X10BaseException):
 
 
 def normalize_housecode(house_code):
+    if house_code is None:
+        raise X10InvalidHouseCode('%r is not a valid house code' % house_code)
     house_code = house_code.upper()
     return house_code
