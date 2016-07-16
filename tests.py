@@ -70,8 +70,22 @@ class TestUtils(TestCase):
             x10_any.normalize_housecode(test_value)
         self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
 
-    def test_validate_house_code_one(self):
+    def test_validate_house_code_one_str(self):
         test_value = '1'
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+
+    def test_validate_house_code_one_int(self):
+        test_value = 1
+
+        def doit():
+            x10_any.normalize_housecode(test_value)
+        self.failUnlessRaises(x10_any.X10InvalidHouseCode, doit)
+
+    def test_validate_house_code_one_float(self):
+        test_value = 1.0
 
         def doit():
             x10_any.normalize_housecode(test_value)
