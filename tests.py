@@ -25,19 +25,18 @@ class TestUtils(TestCase):
 
     def test_validate_house_code_p_upper(self):
         test_value = 'P'
-        canon = 'A'
+        canon = 'P'
         result = x10_any.normalize_housecode(test_value)
         self.assertEqual(canon, result)
 
     def test_validate_house_code_p_lower(self):
         test_value = 'p'
-        canon = 'A'
+        canon = 'P'
         result = x10_any.normalize_housecode(test_value)
         self.assertEqual(canon, result)
 
     def test_validate_house_code_q_upper(self):
         test_value = 'Q'
-        canon = 'A'
 
         def doit():
             x10_any.normalize_housecode(test_value)
@@ -45,7 +44,6 @@ class TestUtils(TestCase):
 
     def test_validate_house_code_q_lower(self):
         test_value = 'q'
-        canon = 'A'
 
         def doit():
             x10_any.normalize_housecode(test_value)
