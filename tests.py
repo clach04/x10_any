@@ -12,6 +12,13 @@ import x10_any
 
 class TestUtils(TestCase):
 
+    def test_validate_house_code_a_upper_unicode_type(self):
+        # potentially Python 2 only test
+        test_value = u'A'
+        canon = 'A'
+        result = x10_any.normalize_housecode(test_value)
+        self.assertEqual(canon, result)
+
     def test_validate_house_code_a_upper(self):
         test_value = 'A'
         canon = 'A'
