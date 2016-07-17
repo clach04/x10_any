@@ -216,6 +216,7 @@ class MochadDriver(X10Driver):
 
         house_and_unit = to_bytes(house_and_unit)
         state = to_bytes(state)
+        # TODO normalize/validate state
         mochad_cmd = b"%s %s %s\n" % (self.default_type, house_and_unit, state)
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
