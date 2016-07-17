@@ -26,7 +26,10 @@ except ImportError:
         # WARNING all on/off not supported with this module :-(
     except:
         firecracker = None
-        import x10_any.cm17a as x10  # Use internal Python 3 compatible copy of http://www.averdevelopment.com/python/x10.html
+        try:
+            import x10_any.cm17a as x10  # Use internal Python 3 compatible copy of http://www.averdevelopment.com/python/x10.html
+        except ImportError:
+            x10 = None
 
 
 try:
