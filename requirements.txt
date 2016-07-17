@@ -1,8 +1,7 @@
-# PySerial 3.1.1 and py2.7 and py3.5 are known to work
-# PySerial 2.5 and 2.7 known to work
-# Earlier versions are probably fine, especially for older
-# Python/Jython versions.
-# However Python 2 and 3 support is in PySerial 3+
+
+# keep in sync with setup.py install_requires=
+
+# Python 2 and 3 support is in PySerial 3+
 pyserial>=3.1.1
 
 # x10_any includes a cm17a driver based on http://www.averdevelopment.com/python/x10.html
@@ -14,3 +13,5 @@ pyserial>=3.1.1
 # https://bitbucket.org/cdelker/python-x10-firecracker-interface/
 #   version 46b300343d3faa148e17479487581a28ebdfac0e
 #   Does NOT support house ON/OFF operations only on individual units
+
+# keep in sync with setup.py install_requires=

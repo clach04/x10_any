@@ -47,4 +47,5 @@ setup(
         'Topic :: Home Automation',
         ],
     platforms='any',  # or distutils.util.get_platform()
+    install_requires=['pyserial>=3.1.1'],  # keep in sync with requirements.txt # could be handled via pip.req.parse_requirements
 )
