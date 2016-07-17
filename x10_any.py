@@ -150,21 +150,22 @@ def netcat(hostname, port, content, log=None):
 
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        log.debug("Trying connection to: %s:%s" % (hostname, port))
+        log.debug('Trying connection to: %s:%s', hostname, port)
         s.connect((hostname, port))
 
-        log.debug("Connected to: %s:%s" % (hostname, port))
-        s.sendall(b"%s\n" % content)
-        log.debug("sent: %s" % content)
+        log.debug('Connected to: %s:%s', hostname, port)
+        received_data_before_send = s.recv(1024)
+        s.sendall(b"%s\n" % content)  # FIXME newline?
+        log.debug('sent: %r', content)
         s.shutdown(socket.SHUT_WR)
 
-        buff = read_all_from_sock(s)
-        log.debug("Received: %s" % repr(buff))
+        received_data_after_send = read_all_from_sock(s)
+        log.debug('Received: %r', received_data_after_send)
         s.close()
-        log.debug("Connection closed.")
-        return buff
+        log.debug('Connection closed.')
+        return (received_data_before_send, received_data_after_send)
     except Exception as ex:
-        log.error("ERROR: %s" % ex)
+        log.error('ERROR: %r', ex)
         raise ex
 
 
@@ -218,4 +219,5 @@ class MochadDriver(X10Driver):
         mochad_cmd = b"%s %s %s\n" % (self.default_type, house_and_unit, state)
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
-        netcat(mochad_host, mochad_port, mochad_cmd)
+        result = netcat(mochad_host, mochad_port, mochad_cmd)
+        log.debug('mochad recieved: %r', result)
