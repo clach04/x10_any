@@ -137,6 +137,17 @@ class X10Driver(object):
 
 def netcat(hostname, port, content, log=None):
     log = log or default_logger
+
+    def read_all_from_sock(s):
+        buff = []
+        while True:
+            data = s.recv(1024)
+            if data:
+                buff.append(data)
+            else:
+                break
+        return b''.join(buff)
+
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         log.debug("Trying connection to: %s:%s" % (hostname, port))
@@ -146,17 +157,12 @@ def netcat(hostname, port, content, log=None):
         s.sendall(b"%s\n" % content)
         log.debug("sent: %s" % content)
         s.shutdown(socket.SHUT_WR)
-        buff = ""
 
-        while True:
-            data = s.recv(1024)
-            if data == b'':
-                break
-            buff = "%s%s" % (buff, data)
+        buff = read_all_from_sock(s)
         log.debug("Received: %s" % repr(buff))
         s.close()
         log.debug("Connection closed.")
-        return repr(buff)
+        return buff
     except Exception as ex:
         log.error("ERROR: %s" % ex)
         raise ex
