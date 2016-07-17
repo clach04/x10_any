@@ -19,9 +19,13 @@ Suggested setup.py parameters:
 
 """
 
-f = open('README.md')
-long_description = f.read()
-f.close()
+readme_filename = 'README.md'
+if os.path.exists(readme_filename):
+    f = open(readme_filename)
+    long_description = f.read()
+    f.close()
+else:
+    long_description = None
 
 setup(
     name='x10_any',
@@ -31,6 +35,7 @@ setup(
     description='Issue x10 commands via CM17A Firecracker or Mochad (CM15A RF/PL and CM19A RF)',
     long_description=long_description,
     packages=['x10_any'],
+    #data_files=[('.', [readme_filename])],  # does not work :-(
     classifiers=[  # See http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
