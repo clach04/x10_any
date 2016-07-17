@@ -171,8 +171,8 @@ def sendCommands(comPort, commands):
         for command in _translateCommands(commands):
             _sendBinaryData(port, header + command + footer)
     except serial.SerialException:
-        print 'Unable to open serial port %s' % comPort
-        print
+        print('Unable to open serial port %s' % comPort)
+        print('')
         raise
 
 
