@@ -35,7 +35,7 @@ setup(
     description='Issue x10 commands via CM17A Firecracker or Mochad (CM15A RF/PL and CM19A RF)',
     long_description=long_description,
     packages=['x10_any'],
-    #data_files=[('.', [readme_filename])],  # does not work :-(
+    #data_files=[('.', [readme_filename])],  # does not work :-( ALso tried setup.cfg [metadata]\ndescription-file = README.md # Maybe try include_package_data = True and a MANIFEST.in?
     classifiers=[  # See http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 4 - Beta',
         'License :: OSI Approved :: Apache Software License',
