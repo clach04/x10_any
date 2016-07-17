@@ -159,7 +159,14 @@ def netcat(hostname, port, content, log=None):
         return repr(buff)
     except Exception as ex:
         log.error("ERROR: %s" % ex)
-    raise ex
+        raise ex
+
+
+
+def to_bytes(in_str):
+    # could choose to only encode for Python 3+
+    # could simple use latin1
+    return in_str.encode('utf-8')
 
 
 class MochadDriver(X10Driver):
@@ -184,6 +191,7 @@ class MochadDriver(X10Driver):
         """
         self.device_address = device_address or ('localhost', 1099)
         self.default_type = default_type or 'rf'
+        self.default_type = to_bytes(self.default_type)
 
     def _x10_command(self, house_code, unit_number, state):
         """Real implementation"""
@@ -199,6 +207,8 @@ class MochadDriver(X10Driver):
             raise NotImplementedError('mochad all ON/OFF %r' % ((house_code, unit_number, state), ))
             house_and_unit = house_code
 
+        house_and_unit = to_bytes(house_and_unit)
+        state = to_bytes(state)
         mochad_cmd = b"%s %s %s\n" % (self.default_type, house_and_unit, state)
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
