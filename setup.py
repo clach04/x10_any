@@ -9,7 +9,7 @@ import x10_any
 
 
 if len(sys.argv) <= 1:
-    print """
+    print("""
 Suggested setup.py parameters:
 
     * build
@@ -17,7 +17,7 @@ Suggested setup.py parameters:
     * sdist  --formats=zip
     * sdist  # NOTE requires tar/gzip commands
 
-"""
+""")
 
 readme_filename = 'README.md'
 if os.path.exists(readme_filename):
