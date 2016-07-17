@@ -5,9 +5,12 @@
 # However Python 2 and 3 support is in PySerial 3+
 pyserial>=3.1.1
 
-# Also needs an x10 driver library
-# http://www.averdevelopment.com/python/x10.html
-#   version 1.0 - for Python 3 2 print statements need manually updating
+# x10_any includes a cm17a driver based on http://www.averdevelopment.com/python/x10.html
+# this internal version includes Python 2 and Python 3 support, it does NOT 
+# support Raspberry Pi GPIO pins
+#
+# If python-x10-firecracker-interface is available it will be used in
+# preference to the builtin version. See
 # https://bitbucket.org/cdelker/python-x10-firecracker-interface/
 #   version 46b300343d3faa148e17479487581a28ebdfac0e
 #   Does NOT support house ON/OFF operations only on individual units
