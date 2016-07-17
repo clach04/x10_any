@@ -3,7 +3,9 @@
 # vim:ts=4:sw=4:softtabstop=4:smarttab:expandtab
 #
 
+import logging
 import os
+import socket
 import sys
 
 
@@ -12,6 +14,13 @@ try:
 except NameError:
     # python 3
     basestring = str
+
+
+version_tuple = (0, 0, 2)
+version = version_string = __version__ = '%d.%d.%d' % version_tuple
+
+logging.basicConfig()
+default_logger = logging.getLogger(__name__)
 
 
 class X10BaseException(Exception):
@@ -116,6 +125,81 @@ class X10Driver(object):
         if unit_number is not None:
             unit_number = normalize_unitnumber(unit_number)
         # else command is intended for the entire house code, not a single unit number
+        # TODO normalize/validate state
 
+        return self._x10_command(house_code, unit_number, state)
+
+    def _x10_command(self, house_code, unit_number, state):
+        """Real implementation"""
         print('x10_command%r' % ((house_code, unit_number, state), ))
         raise NotImplementedError()
+
+
+def netcat(hostname, port, content, log=None):
+    log = log or default_logger
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        log.debug("Trying connection to: %s:%s" % (hostname, port))
+        s.connect((hostname, port))
+
+        log.debug("Connected to: %s:%s" % (hostname, port))
+        s.sendall(b"%s\n" % content)
+        log.debug("sent: %s" % content)
+        s.shutdown(socket.SHUT_WR)
+        buff = ""
+
+        while True:
+            data = s.recv(1024)
+            if data == "":
+                break
+            buff = "%s%s" % (buff, data)
+        log.debug("Received: %s" % repr(buff))
+        s.close()
+        log.debug("Connection closed.")
+        return repr(buff)
+    except Exception as ex:
+        log.error("ERROR: %s" % ex)
+    raise ex
+
+
+class MochadDriver(X10Driver):
+    """X10 command driver for Mochad (or compatible) server.
+    See:
+      * https://sourceforge.net/projects/mochad/ for CM15A RF
+        (radio frequency) and PL (power line) controller and
+        the CM19A RF controller
+      * https://bitbucket.org/clach04/mochad_firecracker/
+        works under Windows and Linux and can control CM17A serial Firecracker
+
+    NOTE This implementation opens the socket and then closes it for each command.
+    TODO implement status support, see https://github.com/zonyl/pytomation/blob/master/pytomation/interfaces/mochad.py
+    """
+
+    def __init__(self, device_address=None, default_type=None):
+        """
+        @param device_address - Optional tuple of (host_address, host_port).
+            Defaults to localhost:1099
+        @param default_type - Option type of device to send command,
+            'rf'  or 'pl'. Defaults to 'rf'
+        """
+        self.device_address = device_address or ('localhost', 1099)
+        self.default_type = default_type or 'rf'
+
+    def _x10_command(self, house_code, unit_number, state):
+        """Real implementation"""
+
+        #log = log or default_logger
+        log = default_logger
+        if state.startswith('xdim') or state.startswith('dim') or state.startswith('bright'):
+            raise NotImplementedError('xdim/dim/bright %r' % ((house_code, unit_num, state), ))
+
+        if unit_number is not None:
+            house_and_unit = '%s%d' % (house_code, unit_number)
+        else:
+            raise NotImplementedError('mochad all ON/OFF %r' % ((house_code, unit_number, state), ))
+            house_and_unit = house_code
+
+        mochad_cmd = b"%s %s %s\n" % (self.default_type, house_and_unit, state)
+        log.debug('mochad send: %r', mochad_cmd)
+        mochad_host, mochad_port = self.device_address
+        netcat(mochad_host, mochad_port, mochad_cmd)
