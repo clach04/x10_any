@@ -150,7 +150,7 @@ def netcat(hostname, port, content, log=None):
 
         while True:
             data = s.recv(1024)
-            if data == "":
+            if data == b'':
                 break
             buff = "%s%s" % (buff, data)
         log.debug("Received: %s" % repr(buff))
