@@ -220,4 +220,4 @@ class MochadDriver(X10Driver):
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
         result = netcat(mochad_host, mochad_port, mochad_cmd)
-        log.debug('mochad recieved: %r', result)
+        log.debug('mochad received: %r', result)
