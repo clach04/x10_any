@@ -52,10 +52,24 @@ Giver user dialout (serial port) access:
 
 ### Sample
 
+Mochad
+
     import x10_any
     
     x10_any.default_logger.setLevel(x10_any.logging.DEBUG) # DEBUG
     
     dev = x10_any.MochadDriver()
+    dev.x10_command('A', 1, x10_any.ON)
+    dev.x10_command('A', 1, x10_any.OFF)
+
+Firecracker
+
+    import x10_any
+    
+    x10_any.default_logger.setLevel(x10_any.logging.DEBUG) # DEBUG
+    
+    dev = x10_any.FirecrackerDriver()
+    #dev = x10_any.FirecrackerDriver('COM11')
+    #dev = x10_any.FirecrackerDriver('/dev/ttyUSB0')
     dev.x10_command('A', 1, x10_any.ON)
     dev.x10_command('A', 1, x10_any.OFF)
