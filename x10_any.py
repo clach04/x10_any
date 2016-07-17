@@ -19,7 +19,7 @@ firecracker = None
 x10 = None
 
 try:
-    import  x10  # http://www.averdevelopment.com/python/x10.html
+    import x10  # http://www.averdevelopment.com/python/x10.html
 except ImportError:
     try:
         import firecracker  # https://bitbucket.org/cdelker/python-x10-firecracker-interface/
@@ -188,7 +188,6 @@ def netcat(hostname, port, content, log=None):
         raise ex
 
 
-
 def to_bytes(in_str):
     # could choose to only encode for Python 3+
     # could simple use latin1
@@ -222,7 +221,7 @@ class MochadDriver(X10Driver):
     def _x10_command(self, house_code, unit_number, state):
         """Real implementation"""
 
-        #log = log or default_logger
+        # log = log or default_logger
         log = default_logger
         if state.startswith('xdim') or state.startswith('dim') or state.startswith('bright'):
             raise NotImplementedError('xdim/dim/bright %r' % ((house_code, unit_num, state), ))
@@ -269,7 +268,7 @@ class FirecrackerDriver(X10Driver):
     def _x10_command(self, house_code, unit_number, state):
         """Real implementation"""
 
-        #log = log or default_logger
+        # log = log or default_logger
         log = default_logger
 
         # FIXME move these functions?
@@ -315,7 +314,7 @@ class FirecrackerDriver(X10Driver):
                     dim_list = []
                     for _ in range(dim_count):
                         dim_list.append(dim_str)
-                    dim_str =  ''.join(dim_list)
+                    dim_str = ''.join(dim_list)
                     if dim_count == 0:
                         # No dim
                         x10_command_str = '%s%s %s' % (house_code, unit_number, 'on')
