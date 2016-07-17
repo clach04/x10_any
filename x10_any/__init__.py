@@ -41,6 +41,7 @@ except NameError:
 
 version_tuple = (0, 0, 2)
 version = version_string = __version__ = '%d.%d.%d' % version_tuple
+__author__ = 'clach04'
 
 logging.basicConfig()
 default_logger = logging.getLogger(__name__)
