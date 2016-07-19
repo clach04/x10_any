@@ -179,7 +179,7 @@ def netcat(hostname, port, content, log=None):
 
         log.debug('Connected to: %s:%s', hostname, port)
         received_data_before_send = s.recv(1024)
-        s.sendall(b"%s\n" % content)  # FIXME newline?
+        s.sendall(content)
         log.debug('sent: %r', content)
         s.shutdown(socket.SHUT_WR)
 
@@ -238,9 +238,9 @@ class MochadDriver(X10Driver):
             house_and_unit = house_code
 
         house_and_unit = to_bytes(house_and_unit)
-        state = to_bytes(state)
         # TODO normalize/validate state
-        mochad_cmd = b"%s %s %s\n" % (self.default_type, house_and_unit, state)
+        state = to_bytes(state)
+        mochad_cmd = self.default_type + b' ' + house_and_unit + b' ' + state + b'\n'  # byte concat works with older Python 3.4
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
         result = netcat(mochad_host, mochad_port, mochad_cmd)

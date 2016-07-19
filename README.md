@@ -21,6 +21,7 @@ Initial focus is supporting:
 Implemented in pure Python. Known to work with:
 
   * Python 2.7
+  * Python 3.4.4
   * Python 3.5
 
 ## Getting Started
