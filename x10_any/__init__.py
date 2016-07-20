@@ -210,6 +210,13 @@ class MochadDriver(X10Driver):
 
     NOTE This implementation opens the socket and then closes it for each command.
     TODO implement status support, see https://github.com/zonyl/pytomation/blob/master/pytomation/interfaces/mochad.py
+
+    Useful Mochad references:
+      * Wiki is down as of 2016-07
+      * https://sourceforge.net/p/mochad/code/ci/master/tree/README
+      * https://bfocht.github.io/mochad/
+          * https://bfocht.github.io/mochad/mochad_reference.html
+      * https://github.com/SensorFlare/mochad
     """
 
     def __init__(self, device_address=None, default_type=None):
@@ -240,7 +247,7 @@ class MochadDriver(X10Driver):
         house_and_unit = to_bytes(house_and_unit)
         # TODO normalize/validate state
         state = to_bytes(state)
-        mochad_cmd = self.default_type + b' ' + house_and_unit + b' ' + state + b'\n'  # byte concat works with older Python 3.4
+        mochad_cmd = self.default_type + b' ' + house_and_unit + b' ' + state + b'\r\n'  # byte concat works with older Python 3.4
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
         result = netcat(mochad_host, mochad_port, mochad_cmd)

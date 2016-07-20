@@ -30,6 +30,7 @@ import time
 import serial
 
 # The FireCracker spec is at http://text.staticfree.info/cm17a_proto.txt
+# http://www.edcheung.com/automa/rf.txt
 
 leadInOutDelay = 0.5
 bitDelay = 0.001
