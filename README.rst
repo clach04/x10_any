@@ -3,7 +3,7 @@ x10_any
 
 Wrapper module to control X10 devices.
 
-[ ![Codeship Status for clach04/x10_any](https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master)](https://codeship.com/projects/163630)
+|Codeship Status for clach04/x10_any|
 
 Table of Contents
 ~~~~~~~~~~~~~~~~~
@@ -82,3 +82,6 @@ Firecracker::
     #dev = x10_any.FirecrackerDriver('/dev/ttyUSB0')
     dev.x10_command('A', 1, x10_any.ON)
     dev.x10_command('A', 1, x10_any.OFF)
+
+.. |Codeship Status for clach04/x10_any| image:: https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master
+   :target: https://codeship.com/projects/163630
