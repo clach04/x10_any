@@ -1,15 +1,19 @@
-# x10_any
+x10_any
+=======
 
 Wrapper module to control X10 devices.
 
 [ ![Codeship Status for clach04/x10_any](https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master)](https://codeship.com/projects/163630)
 
-### Table of Contents
+Table of Contents
+~~~~~~~~~~~~~~~~~
+
 * [Information](#information)
 * [Getting Started](#getting-started)
 
 
-## Information
+Information
+-----------
 
 Initial focus is supporting:
   * Mochad (or compatible) servers to control
@@ -24,22 +28,21 @@ Implemented in pure Python. Known to work with:
   * Python 3.4.4
   * Python 3.5
 
-## Getting Started
+Getting Started
+---------------
 
 To get started and install the latest version from
-[PyPi](https://pypi.python.org/pypi/x10_any/)
-
+[PyPi](https://pypi.python.org/pypi/x10_any/)::
     pip install x10_any
 
-If installing/working with a source checkout issue:
-
+If installing/working with a source checkout issue::
     pip install -r requirements.txt
 
-Then run tests via:
-
+Then run tests via::
     python -m x10_any.test.tests
 
-### Serial Port Permissions under Linux
+Serial Port Permissions under Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Under Linux most users do not have serial port permissions,
 either:
@@ -47,14 +50,15 @@ either:
   * give user permission (e.g. add to group "dialout") - RECOMMENDED
   * run this demo as root - NOT recommended!
 
-Giver user dialout (serial port) access:
+Giver user dialout (serial port) access::
 
     # NOTE requires logout/login to take effect
     sudo usermod -a -G dialout $USER
 
-### Sample
+Sample
+~~~~~~
 
-Mochad
+Mochad::
 
     import x10_any
     
@@ -64,7 +68,7 @@ Mochad
     dev.x10_command('A', 1, x10_any.ON)
     dev.x10_command('A', 1, x10_any.OFF)
 
-Firecracker
+Firecracker::
 
     import x10_any
     
