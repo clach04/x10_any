@@ -39,7 +39,7 @@ except NameError:
     basestring = str
 
 
-version_tuple = (0, 0, 6)
+version_tuple = (0, 0, 7)
 version = version_string = __version__ = '%d.%d.%d' % version_tuple
 __author__ = 'clach04'
 
