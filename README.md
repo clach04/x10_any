@@ -35,6 +35,10 @@ If installing/working with a source checkout issue:
 
     pip install -r requirements.txt
 
+Then run tests via:
+
+    python -m x10_any.test.tests
+
 ### Serial Port Permissions under Linux
 
 Under Linux most users do not have serial port permissions,
