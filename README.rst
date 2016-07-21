@@ -33,12 +33,15 @@ Getting Started
 
 To get started and install the latest version from
 [PyPi](https://pypi.python.org/pypi/x10_any/)::
+
     pip install x10_any
 
 If installing/working with a source checkout issue::
+
     pip install -r requirements.txt
 
 Then run tests via::
+
     python -m x10_any.test.tests
 
 Serial Port Permissions under Linux
