@@ -8,8 +8,8 @@ Wrapper module to control X10 devices.
 Table of Contents
 ~~~~~~~~~~~~~~~~~
 
-* [Information](#information)
-* [Getting Started](#getting-started)
+* `Information`_
+* `Getting Started`_
 
 
 Information
