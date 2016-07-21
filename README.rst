@@ -36,7 +36,7 @@ Getting Started
 ---------------
 
 To get started and install the latest version from
-[PyPi](https://pypi.python.org/pypi/x10_any/)::
+`PyPi <https://pypi.python.org/pypi/x10_any/>`_::
 
     pip install x10_any
 
