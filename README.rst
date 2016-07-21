@@ -16,6 +16,7 @@ Information
 -----------
 
 Initial focus is supporting:
+
   * Mochad (or compatible) servers to control
       * https://sourceforge.net/projects/mochad/ for CM15A RF (radio frequency) and PL (power line) controller and the CM19A RF controller
       * https://bitbucket.org/clach04/mochad_firecracker/ works under Windows and Linux and can control CM17A serial Firecracker
