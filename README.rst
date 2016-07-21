@@ -47,8 +47,8 @@ Serial Port Permissions under Linux
 Under Linux most users do not have serial port permissions,
 either:
 
-  * give user permission (e.g. add to group "dialout") - RECOMMENDED
-  * run this demo as root - NOT recommended!
+* give user permission (e.g. add to group "dialout") - RECOMMENDED
+* run this demo as root - NOT recommended!
 
 Giver user dialout (serial port) access::
 
