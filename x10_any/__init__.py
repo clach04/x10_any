@@ -162,32 +162,18 @@ class X10Driver(object):
 def netcat(hostname, port, content, log=None):
     log = log or default_logger
 
-    def read_all_from_sock(s):
-        buff = []
-        while True:
-            data = s.recv(1024)
-            if data:
-                buff.append(data)
-            else:
-                break
-        return b''.join(buff)
-
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         log.debug('Trying connection to: %s:%s', hostname, port)
         s.connect((hostname, port))
 
         log.debug('Connected to: %s:%s', hostname, port)
-        received_data_before_send = s.recv(1024)
         s.sendall(content)
         log.debug('sent: %r', content)
         s.shutdown(socket.SHUT_WR)
 
-        received_data_after_send = read_all_from_sock(s)
-        log.debug('Received: %r', received_data_after_send)
         s.close()
         log.debug('Connection closed.')
-        return (received_data_before_send, received_data_after_send)
     except Exception as ex:
         log.error('ERROR: %r', ex)
         raise ex
@@ -247,7 +233,7 @@ class MochadDriver(X10Driver):
         house_and_unit = to_bytes(house_and_unit)
         # TODO normalize/validate state
         state = to_bytes(state)
-        mochad_cmd = self.default_type + b' ' + house_and_unit + b' ' + state + b'\r\n'  # byte concat works with older Python 3.4
+        mochad_cmd = self.default_type + b' ' + house_and_unit + b' ' + state + b'\n'  # byte concat works with older Python 3.4
         log.debug('mochad send: %r', mochad_cmd)
         mochad_host, mochad_port = self.device_address
         result = netcat(mochad_host, mochad_port, mochad_cmd)
