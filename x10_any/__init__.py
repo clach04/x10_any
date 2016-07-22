@@ -159,8 +159,18 @@ class X10Driver(object):
         raise NotImplementedError()
 
 
-def netcat(hostname, port, content, log=None):
+def netcat(hostname, port, content, log=None, read_after_send=False):
     log = log or default_logger
+
+    def read_all_from_sock(s):
+        buff = []
+        while True:
+            data = s.recv(1024)
+            if data:
+                buff.append(data)
+            else:
+                break
+        return b''.join(buff)
 
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -172,8 +182,15 @@ def netcat(hostname, port, content, log=None):
         log.debug('sent: %r', content)
         s.shutdown(socket.SHUT_WR)
 
+        if read_after_send:
+            received_data_after_send = read_all_from_sock(s)
+            log.debug('Received: %r', received_data_after_send)
+        else:
+            received_data_after_send = None
+
         s.close()
         log.debug('Connection closed.')
+        return received_data_after_send
     except Exception as ex:
         log.error('ERROR: %r', ex)
         raise ex
