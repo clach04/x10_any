@@ -259,6 +259,7 @@ class MochadDriver(X10Driver):
 
 class FirecrackerDriver(X10Driver):
     """X10 command driver for CM17A serial Firecracker X10 unit
+    and CM19A USB Firecracker unit
     """
 
     def __init__(self, device_address=None):

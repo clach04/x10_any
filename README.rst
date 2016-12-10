@@ -22,7 +22,7 @@ Initial focus is supporting:
   * https://sourceforge.net/projects/mochad/ for CM15A RF (radio frequency) and PL (power line) controller and the CM19A RF controller
   * https://bitbucket.org/clach04/mochad_firecracker/ works under Windows and Linux and can control CM17A serial Firecracker
   
-* CM17A serial Firecracker X10 unit, builtin support for CM17A over regular serial port. For control via GPIO on Raspberry Pi manually install:
+* CM17A serial Firecracker X10 unit, builtin support for CM17A over regular serial port. Also known to work with CM19A USB Firecracker device. For control via GPIO on Raspberry Pi manually install:
 
   * https://bitbucket.org/cdelker/python-x10-firecracker-interface can be used on Raspberry Pi to control GPIO, not (yet) Python 3 compatible and does not support ALL on/off
 
