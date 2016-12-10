@@ -268,6 +268,7 @@ class FirecrackerDriver(X10Driver):
         """
 
         log = default_logger
+        log.debug('modules firecracker=%r, x10=%r', firecracker, x10)
         if firecracker is None and x10 is None:
             raise X10BaseException('no CM17A python module available')  # raise ImportError instead?
 
