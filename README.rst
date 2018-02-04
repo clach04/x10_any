@@ -3,6 +3,8 @@ x10_any
 
 Wrapper module to control X10 devices.
 
+.. image:: https://travis-ci.org/clach04/x10_any.svg?branch=master
+    :target: https://travis-ci.org/clach04/x10_any
 |Codeship Status for clach04/x10_any|
 
 Table of Contents
