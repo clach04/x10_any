@@ -26,6 +26,7 @@ __version__ = 1.0
 
 import sys
 import time
+import threading
 
 import serial
 
@@ -138,6 +139,8 @@ def _setRTSDTR(port, RTS, DTR):
 
 # Public Interface (programmatic and command line)
 
+mutex = threading.Lock()
+
 def sendCommands(comPort, commands):
     """Send X10 commands using the FireCracker on comPort
 
@@ -165,16 +168,20 @@ def sendCommands(comPort, commands):
     # Turn on module A1 and dim it 3 steps, then brighten it 1 step
     >>> sendCommands('com1', 'A1 On, A Dim, A Dim, A Dim, A Bright')
     """
+    mutex.acquire()
     try:
-        port = serial.Serial(port=comPort)
-        header = '11010101 10101010'
-        footer = '10101101'
-        for command in _translateCommands(commands):
-            _sendBinaryData(port, header + command + footer)
-    except serial.SerialException:
-        print('Unable to open serial port %s' % comPort)
-        print('')
-        raise
+        try:
+            port = serial.Serial(port=comPort)
+            header = '11010101 10101010'
+            footer = '10101101'
+            for command in _translateCommands(commands):
+                _sendBinaryData(port, header + command + footer)
+        except serial.SerialException:
+            print('Unable to open serial port %s' % comPort)
+            print('')
+            raise
+    finally:
+        mutex.release()
 
 
 def main(argv=None):
