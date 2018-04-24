@@ -18,6 +18,9 @@ except ImportError:
 firecracker = None
 x10 = None
 
+# The internal x10_any.cm17a is preferred.
+# It is Python 3 compat, supports all devices in a house, and thread safe.
+# Attempt to import other libraries first to allow override.
 try:
     import x10  # http://www.averdevelopment.com/python/x10.html
 except ImportError:
