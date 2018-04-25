@@ -19,7 +19,7 @@ Suggested setup.py parameters:
 
 """)
 
-readme_filename = 'README.md'
+readme_filename = 'README.rst'
 if os.path.exists(readme_filename):
     f = open(readme_filename)
     long_description = f.read()
