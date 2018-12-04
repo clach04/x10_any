@@ -46,8 +46,10 @@ version_tuple = (0, 0, 9)
 version = version_string = __version__ = '%d.%d.%d' % version_tuple
 __author__ = 'clach04'
 
-logging.basicConfig()
 default_logger = logging.getLogger(__name__)
+default_logger.info('%s version %s', __name__, version)
+default_logger.info('Python %r on %r', sys.version, sys.platform)
+
 
 
 class X10BaseException(Exception):

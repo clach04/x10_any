@@ -70,23 +70,30 @@ Mochad::
 
     import x10_any
     
-    x10_any.default_logger.setLevel(x10_any.logging.DEBUG) # DEBUG
-    
     dev = x10_any.MochadDriver()
     dev.x10_command('A', 1, x10_any.ON)
     dev.x10_command('A', 1, x10_any.OFF)
 
 Firecracker::
 
+
+    import logging
+
+    log = logging.getLogger('x10_any')
+    logging.basicConfig()  # TODO include function name/line numbers in log
+    #log.setLevel(level=logging.INFO)
+    log.setLevel(level=logging.DEBUG)
+
     import x10_any
-    
-    x10_any.default_logger.setLevel(x10_any.logging.DEBUG) # DEBUG
-    
+
     dev = x10_any.FirecrackerDriver()
     #dev = x10_any.FirecrackerDriver('COM11')
     #dev = x10_any.FirecrackerDriver('/dev/ttyUSB0')
-    dev.x10_command('A', 1, x10_any.ON)
-    dev.x10_command('A', 1, x10_any.OFF)
+    house_code = 'A'
+    unit_code = 1
+    dev.x10_command(house_code, unit_code, x10_any.ON)
+    dev.x10_command(house_code, unit_code, x10_any.OFF)
+
 
 .. |Codeship Status for clach04/x10_any| image:: https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master
    :target: https://codeship.com/projects/163630
