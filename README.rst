@@ -45,6 +45,11 @@ If installing/working with a source checkout issue::
 
     pip install -r requirements.txt
 
+NOTE Debian/Ubuntu/Rasbian can install system packages instead of using pip via::
+
+    sudo apt-get install python-serial
+    sudo apt-get install python2-serial
+
 Then run tests via::
 
     python -m x10_any.test.tests
