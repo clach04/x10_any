@@ -99,6 +99,11 @@ Firecracker::
     dev.x10_command(house_code, unit_code, x10_any.ON)
     dev.x10_command(house_code, unit_code, x10_any.OFF)
 
+Serial Port Device names under Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/ for notes on using `udevadm` to determine serial number and adding entries to `/etc/udev/rules.d/99-usb-serial.rules` for persistent devicenames if using multiple usb serial adapters.
+
 
 .. |Codeship Status for clach04/x10_any| image:: https://codeship.com/projects/f7535da0-2dd5-0134-789e-12bd9e093a4a/status?branch=master
    :target: https://codeship.com/projects/163630
