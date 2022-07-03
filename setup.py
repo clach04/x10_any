@@ -27,9 +27,11 @@ if os.path.exists(readme_filename):
 else:
     long_description = None
 
+exec(open(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'x10_any', '_version.py')).read())
+
 setup(
     name='x10_any',
-    version=x10_any.__version__,
+    version=__version__,
     author='clach04',
     url='https://github.com/clach04/x10_any',
     description='Issue x10 commands via CM17A Firecracker or Mochad (CM15A RF/PL and CM19A RF)',
