@@ -42,7 +42,7 @@ except NameError:
     basestring = str
 
 
-from _version import __version__, __version_info__
+from ._version import __version__, __version_info__
 
 
 default_logger = logging.getLogger(__name__)
