@@ -1,2 +1,2 @@
-version_tuple = (0, 0, 9)
-version = version_string = __version__ = '%d.%d.%d' % version_tuple
+version_tuple = __version_info__ = (0, 0, 9)
+version = version_string = __version__ = '.'.join(map(str, __version_info__))
