@@ -3,8 +3,8 @@ x10_any
 
 Wrapper module to control X10 devices.
 
-  * https://github.com/clach04/x10_any
-  * https://pypi.org/project/x10_any/
+* https://github.com/clach04/x10_any
+* https://pypi.org/project/x10_any/
 
 .. image:: https://travis-ci.org/clach04/x10_any.svg?branch=master
     :target: https://travis-ci.org/clach04/x10_any
