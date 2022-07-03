@@ -42,9 +42,8 @@ except NameError:
     basestring = str
 
 
-version_tuple = (0, 0, 9)
-version = version_string = __version__ = '%d.%d.%d' % version_tuple
-__author__ = 'clach04'
+from _version import version, __version__
+
 
 default_logger = logging.getLogger(__name__)
 default_logger.info('%s version %s', __name__, version)
