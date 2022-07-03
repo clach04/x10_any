@@ -42,11 +42,11 @@ except NameError:
     basestring = str
 
 
-from _version import version, __version__
+from _version import __version__
 
 
 default_logger = logging.getLogger(__name__)
-default_logger.info('%s version %s', __name__, version)
+default_logger.info('%s version %s', __name__, __version__)
 default_logger.info('Python %r on %r', sys.version, sys.platform)
 
 
