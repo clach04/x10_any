@@ -43,6 +43,7 @@ To get started and install the latest version from
 `PyPi <https://pypi.python.org/pypi/x10_any/>`_::
 
     pip install x10_any
+    # Or latest from source code via; pip install git+https://github.com/clach04/x10_any.git
 
 If installing/working with a source checkout issue::
 
