@@ -1,3 +1,7 @@
+name: Python Package Test
+
+on: [push]
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
