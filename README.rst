@@ -48,6 +48,10 @@ To get started and install the latest version from
 If installing/working with a source checkout issue::
 
     pip install -r requirements.txt
+    # Alternatively
+    python setup.py develop
+    python setup.py install -e
+    python -m pip install -e .
 
 NOTE Debian/Ubuntu/Rasbian can install system packages instead of using pip via::
 
